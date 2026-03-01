@@ -21,7 +21,14 @@ interface PaymentStatusProps {
 export default function PaymentStatus({ payments, profile }: PaymentStatusProps) {
     const registrationPayment = payments.find(p => p.payment_type === 'registration');
 
-    const registrationFee = 350;
+    // Registration fee based on member type
+    const positionFeeMap: Record<string, number> = {
+        founding_member: 600,
+        committee_leader: 500,
+        general_member: 400,
+        school_member: 300,
+    };
+    const registrationFee = profile?.position ? positionFeeMap[profile.position] ?? 350 : 350;
 
     const renderStatus = () => {
         if (registrationPayment) {
@@ -154,7 +161,7 @@ export default function PaymentStatus({ payments, profile }: PaymentStatusProps)
             <CardHeader>
                 <CardTitle>Registration Payment</CardTitle>
                 <CardDescription>
-                    {registrationPayment?.payment_approved ? "Your payment for the reunion has been confirmed." : "Your registration payment status."}
+                    {registrationPayment?.payment_approved ? `Your payment for the reunion has been confirmed. Registration Fee: ${registrationFee} TK` : `Your registration payment status. Registration Fee: ${registrationFee} TK`}
                 </CardDescription>
             </CardHeader>
             {renderStatus()}

@@ -17,7 +17,6 @@ const navItems = [
   { href: '/dashboard/profile', icon: User, label: 'Profile' },
   { href: '/dashboard/events', icon: Calendar, label: 'My Events' },
   { href: '/dashboard/photobooth', icon: Camera, label: 'Photo Frame' },
-  { href: '/dashboard/donate', icon: Heart, label: 'Donate' },
 ]
 
 export default function SidebarNav({ onLogout }: SidebarNavProps) {

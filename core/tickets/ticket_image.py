@@ -194,7 +194,7 @@ def get_font(name, size):
 # ── Image asset helpers ─────────────────────────────────────────────
 IMAGE_CACHE_DIR = os.path.join(tempfile.gettempdir(), 'cmhs_ticket_images')
 
-BG_IMAGE_URL = 'https://res.cloudinary.com/dzdf1wu5x/image/upload/v1772005693/Screenshot_2026-02-25_134738_yrcmn0.png'
+BG_IMAGE_URL = 'https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772363577/LOGO_1_3x_pcnffh.png'
 LANTERN_URL = 'https://res.cloudinary.com/dzdf1wu5x/image/upload/v1771999550/85213-removebg-preview_sgldmm.png'
 LOGO_URL = 'https://res.cloudinary.com/dzdf1wu5x/image/upload/v1771998698/Expressive_Graffiti_Logo_for_Ramadan_Iftar-removebg-preview_ixylto.png'
 

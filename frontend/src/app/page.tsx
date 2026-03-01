@@ -33,7 +33,7 @@ export default function Home() {
         <main>
           <Hero />
           <div className="relative z-10 bg-background">
-            <MarqueeNotice />
+            {/* <MarqueeNotice /> */}
             <div className="relative min-h-screen">
               {parallaxImage && (
                 <div className="sticky top-0 h-screen w-full -z-10 overflow-hidden">
@@ -67,12 +67,12 @@ export default function Home() {
                 <ScrollWrapper>
                   <Venue />
                 </ScrollWrapper>
-                <ScrollWrapper>
+                {/* <ScrollWrapper>
                   <Donations />
-                </ScrollWrapper>
-                <ScrollWrapper>
+                </ScrollWrapper> */}
+                {/* <ScrollWrapper>
                   <Sponsors />
-                </ScrollWrapper>
+                </ScrollWrapper> */}
                 <ScrollWrapper>
                   <ContactSection />
                 </ScrollWrapper>

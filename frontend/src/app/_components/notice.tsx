@@ -51,7 +51,7 @@ export default function Notice() {
             Notice Board
           </h2>
           <p className="text-lg text-muted-foreground mt-2">
-            Latest news and updates about the grand reunion.
+            Latest news and updates about the iftar mahfil.
           </p>
         </div>
 

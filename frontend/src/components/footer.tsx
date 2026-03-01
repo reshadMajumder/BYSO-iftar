@@ -25,7 +25,7 @@ export default function Footer() {
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
               {/* <li><Link href="/register" className="hover:text-primary transition-colors">Register</Link></li> */}
               {/* <li><Link href="/donations" className="hover:text-primary transition-colors">Donations</Link></li> */}
-              <li><Link href="/#" className="hover:text-primary transition-colors">Donations</Link></li>
+              {/* <li><Link href="/#" className="hover:text-primary transition-colors">Donations</Link></li> */}
 
             </ul>
           </div>

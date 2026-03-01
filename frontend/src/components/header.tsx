@@ -143,9 +143,9 @@ export default function Header() {
           <Button variant="ghost" asChild className="text-white hover:bg-white/10 hover:text-white">
             <Link href="/contact"><MessageSquare className="mr-2 h-4 w-4" /> Contact Us</Link>
           </Button>
-          <Button variant="ghost" asChild className="text-white hover:bg-white/10 hover:text-white">
+          {/* <Button variant="ghost" asChild className="text-white hover:bg-white/10 hover:text-white">
             <Link href="/dashboard/donate"><Heart className="mr-2 h-4 w-4" /> Donate</Link>
-          </Button>
+          </Button> */}
           {authButton(false)}
           {isLoggedIn && (
             <Button variant="ghost" onClick={handleLogout} className="text-white hover:bg-white/10 hover:text-white">Logout</Button>
@@ -176,9 +176,9 @@ export default function Header() {
             <Button variant="outline" asChild className="w-full justify-start border-gray-200 text-black hover:bg-black/5" onClick={closeMenu}>
               <Link href="/contact"><MessageSquare className="mr-2 h-4 w-4" /> Contact Us</Link>
             </Button>
-            <Button variant="outline" asChild className="w-full justify-start border-gray-200 text-black hover:bg-black/5" onClick={closeMenu}>
+            {/* <Button variant="outline" asChild className="w-full justify-start border-gray-200 text-black hover:bg-black/5" onClick={closeMenu}>
               <Link href="/dashboard/donate"><Heart className="mr-2 h-4 w-4" /> Donate</Link>
-            </Button>
+            </Button> */}
             <div className="h-px bg-gray-100 my-2" />
             {authButton(true)}
             {isLoggedIn && (
