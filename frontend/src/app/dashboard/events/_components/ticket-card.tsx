@@ -226,7 +226,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
               <div className={cn("w-[1px] h-10 bg-gradient-to-b", styles.border)} />
               {batch && (
                 <div>
-                  <p className="text-[9px] uppercase tracking-wider opacity-60 mb-1">Batch</p>
+                  <p className="text-[9px] uppercase tracking-wider opacity-60 mb-1">Position</p>
                   <p className="text-xl font-semibold">{batch}</p>
                 </div>
               )}

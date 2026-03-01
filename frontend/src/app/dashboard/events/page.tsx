@@ -558,7 +558,7 @@ export default function EventsPage() {
                     </div>
                     <div className="text-center mt-6 space-y-3">
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                            {showClientDownload && (
+                            {/* {showClientDownload && (
                                 <Button onClick={handleDownload} disabled={isDownloading}>
                                     {isDownloading ? (
                                         <>
@@ -575,7 +575,7 @@ export default function EventsPage() {
                                         </>
                                     )}
                                 </Button>
-                            )}
+                            )} */}
                             <Button variant="outline" onClick={handleServerDownload} disabled={isServerDownloading}>
                                 {isServerDownloading ? (
                                     <>

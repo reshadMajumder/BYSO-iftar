@@ -562,7 +562,7 @@ def render_ticket_image(ticket):
 
     # --- Measure each group's height ---
     # Group 1: title block (mb-6 wrapper + title + subtitle row)
-    title_text = "CMHS Grand Iftar"
+    title_text = "BYSO Iftar"
     tb = draw.textbbox((0, 0), title_text, font=font_title)
     title_h = tb[3] - tb[1]
 
@@ -716,7 +716,7 @@ def render_ticket_image(ticket):
     c2x = sep1_x + 1 + gap_value
     batch_content_h = label_h + label_gap + (batch_bb[3] - batch_bb[1])
     c2_top = row_center_y - batch_content_h // 2
-    draw.text((c2x, c1_top), "BATCH", fill=lbl_color, font=font_label)
+    draw.text((c2x, c1_top), "Position", fill=lbl_color, font=font_label)
     draw.text((c2x, c1_top + label_h + label_gap), batch, fill=val_color, font=font_batch)
 
     # Separator 2
@@ -753,9 +753,9 @@ def render_ticket_image(ticket):
     det_row_cy = dy + group3_h // 2  # vertical center
 
     details = [
-        ("DATE", "March 18, 2026"),
+        ("DATE", "March 15, 2026"),
         ("TIME", "03:00 PM"),
-        ("VENUE", "CMHS Campus"),
+        ("VENUE", "China Garden Hall"),
     ]
 
     for i, (lbl, val) in enumerate(details):
