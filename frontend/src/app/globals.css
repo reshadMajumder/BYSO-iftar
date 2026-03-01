@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 208 100% 97%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 197 71% 73%;
+    --primary-foreground: 224 71% 4%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 285 87% 53%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 197 71% 73%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.8rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --bkash: 337 78% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .marquee-content {
+    animation-duration: 20s;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+    text-stroke: 1px rgba(255, 255, 255, 0.4);
+    color: transparent;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15));
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .text-outline {
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7);
+      text-stroke: 1.5px rgba(255, 255, 255, 0.7);
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
+    }
+  }
+
+  .font-invitation {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .font-elegant {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Elegant Ticket Animations */
+  @keyframes sway {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-5px) rotate(0.5deg);
+    }
+    75% {
+      transform: translateY(5px) rotate(-0.5deg);
+    }
+  }
+
+  .animate-sway {
+    animation: sway 8s ease-in-out infinite;
+  }
+
+  /* Radial gradient for spotlight effect */
+  .bg-radial-gradient {
+    background: radial-gradient(circle at 50% 50%, var(--tw-gradient-stops));
+  }
+
+  /* Elegant shine effect */
+  @keyframes shine {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-shine {
+    background-size: 200% auto;
+    animation: shine 8s linear infinite;
+  }
+
+  /* Premium shimmer effect */
+  @keyframes shimmer {
+    0% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+}
