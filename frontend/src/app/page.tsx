@@ -63,8 +63,7 @@ export default function Home() {
                 <ScrollWrapper>
                   <Instructions />
                 </ScrollWrapper>
-                {/* <PersonalizedContent />
-                <GiftsOfMemory /> */}
+                
                 <ScrollWrapper>
                   <Venue />
                 </ScrollWrapper>

@@ -134,7 +134,7 @@ export default function Header() {
             "hidden text-xl font-bold tracking-tight sm:block font-headline transition-colors",
             isMenuOpen ? "text-black" : "text-white"
           )}>
-            CMHSians
+            BYSO
           </h1>
         </Link>
 

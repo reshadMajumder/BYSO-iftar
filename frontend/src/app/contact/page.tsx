@@ -39,8 +39,8 @@ export default function ContactPage() {
                                 <Mail className="h-6 w-6 text-primary mt-1" />
                                 <div>
                                     <h4 className="font-semibold">Email</h4>
-                                    <a href="mailto:excmhsian@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                                        excmhsian@gmail.com
+                                    <a href="mailto:byso.org@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                        byso.org@gmail.com
                                     </a>
                                 </div>
                             </div>
@@ -50,21 +50,9 @@ export default function ContactPage() {
                                     <h4 className="font-semibold">Phone</h4>
                                     <div className="space-y-3 mt-2">
                                         <div className="flex flex-col">
-                                            <span className="text-sm font-bold text-primary">Dr. Md. Azharul Islam (Mitul)</span>
-                                            <a href="tel:+8801719454545" className="text-muted-foreground hover:text-primary transition-colors">
-                                                01719454545
-                                            </a>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-sm font-bold text-primary">Farhan Iqbal Shad</span>
-                                            <a href="tel:+8801401165474" className="text-muted-foreground hover:text-primary transition-colors">
-                                                01401165474
-                                            </a>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-sm font-bold text-primary">Rohan Chowdhury</span>
-                                            <a href="tel:+8801754658253" className="text-muted-foreground hover:text-primary transition-colors">
-                                                01754658253
+                                            <span className="text-sm font-bold text-primary">BYSO Contact</span>
+                                            <a href="tel:+8801878987574" className="text-muted-foreground hover:text-primary transition-colors">
+                                                01878987574
                                             </a>
                                         </div>
                                         <div className="flex flex-col border-t border-border/30 pt-2 mt-2">

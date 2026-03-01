@@ -31,7 +31,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 2, ease: "easeOut" }}
           className="font-invitation text-sm md:text-3xl lg:text-4xl text-amber-300 drop-shadow-glow mb-2 uppercase"
         >
-          CMHS GRAND IFTAR MAHFIL 2026
+          BYSO IFTAR MAHFIL 2026
         </motion.h2>
 
         <motion.h1
@@ -40,7 +40,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: "circOut" }}
           className="font-headline text-4xl sm:text-4xl md:text-6xl lg:text-8xl font-bold leading-tight drop-shadow-2xl text-outline mb-4"
         >
-          Back to Where It All Began
+          Together for Humanity
         </motion.h1>
 
         <motion.p
@@ -49,7 +49,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 2 }}
           className="max-w-xl text-xs md:text-lg text-white/80 font-body mb-8"
         >
-          Join us for the CMHS GRAND IFTAR MAHFIL 2026. <br className="hidden md:block" /> Reconnect, reminisce, and create new memories.
+          Join us for the BYSO Iftar Mahfil 2026. <br className="hidden md:block" /> Reconnect, celebrate brotherhood, and strengthen bonds.
         </motion.p>
 
         <motion.div

@@ -40,7 +40,7 @@ export default function RegisterPage() {
                   <Logo className="h-16 w-16" />
                 </div>
                 <CardTitle className="text-3xl font-headline tracking-tight text-primary">Create Your Account</CardTitle>
-                <CardDescription className="text-muted-foreground/80">Join the CMHSIAN network and register for the event.</CardDescription>
+                <CardDescription className="text-muted-foreground/80">Join the BYSO network and register for the Iftar Mahfil.</CardDescription>
               </CardHeader>
               <CardContent>
                 <RegisterForm />

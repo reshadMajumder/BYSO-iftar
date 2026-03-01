@@ -51,10 +51,10 @@ export default function Donations() {
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold font-headline flex items-center justify-center gap-4">
                     <Handshake className="h-8 w-8 md:h-10 md:w-10 text-accent" />
-                    CMHSian Contributions
+                    BYSO Member Contributions
                 </h2>
                 <p className="text-md md:text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-                    Generous donations from our CMHSian's are making this event possible.
+                    Generous donations from our BYSO members are making this event possible.
                 </p>
             </div>
 

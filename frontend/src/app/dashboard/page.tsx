@@ -73,7 +73,7 @@ export default function DashboardPage() {
               Hello{profileData.name ? <>, <span className="text-primary">{profileData.name.split(' ')[0]}</span></> : ''}!
             </h1>
             <p className="text-muted-foreground font-medium mt-1">
-              Welcome back to your CMHS Grand Iftar Dashboard.
+              Welcome back to your BYSO Iftar Mahfil Dashboard.
             </p>
           </div>
         </div>

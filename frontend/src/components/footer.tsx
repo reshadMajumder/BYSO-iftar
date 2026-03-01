@@ -12,11 +12,11 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <Logo className="h-10 w-10" />
               <span className="text-lg font-bold font-headline">
-                CMHS GRAND IFTAR 2026
+                BYSO IFTAR MAHFIL 2026
               </span>
             </div>
             <p className="text-muted-foreground text-sm">
-              &copy; {new Date().getFullYear()} CMHS Alumni Association. All Rights Reserved.
+              &copy; {new Date().getFullYear()} Bangladesh Youngstar Social Organization (BYSO). All Rights Reserved.
             </p>
           </div>
           <div>

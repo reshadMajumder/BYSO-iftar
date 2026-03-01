@@ -55,7 +55,7 @@ export default function PhotoFrame() {
             scale: 2 // Increase resolution
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'cmhs-iftar-frame.png';
+            link.download = 'byso-iftar-frame.png';
             link.href = canvas.toDataURL('image/png');
             link.click();
         });
@@ -139,10 +139,10 @@ export default function PhotoFrame() {
                     <span className="absolute top-[10%] left-[5%] text-4xl font-headline text-purple-400/50 -rotate-12 opacity-80">Iftar Mahfil</span>
                     <span className="absolute bottom-[8%] right-[5%] text-5xl font-graffiti text-accent/50 rotate-6 opacity-80">স্মৃতিচারণ</span>
                     <span className="absolute bottom-[20%] left-[8%] text-lg font-bold font-headline text-pink-400/70 -rotate-6">2026</span>
-                    <span className="absolute top-[15%] right-[10%] text-2xl font-bold font-graffiti text-green-500/60 rotate-12">CMHS</span>
+                    <span className="absolute top-[15%] right-[10%] text-2xl font-bold font-graffiti text-green-500/60 rotate-12">BYSO</span>
                     <span className="absolute top-[30%] right-[15%] text-xl font-headline text-white/60 -rotate-12">Friends</span>
                     <span className="absolute bottom-[35%] left-[10%] text-2xl font-graffiti text-red-400/50 rotate-12">আড্ডা</span>
-                    <span className="absolute top-[50%] left-[5%] text-md font-headline text-blue-800/40 rotate-12">Classroom</span>
+                    <span className="absolute top-[50%] left-[5%] text-md font-headline text-blue-800/40 rotate-12">Humanity</span>
                     <span className="absolute bottom-[45%] right-[8%] text-md font-graffiti text-yellow-300/80 -rotate-12">Memories</span>
 
                     <Book className="absolute top-[60%] left-[15%] text-white/40 h-8 w-8 rotate-12" />
@@ -171,9 +171,9 @@ export default function PhotoFrame() {
                     <div className="absolute inset-0 z-20 pointer-events-none p-4 flex flex-col justify-between">
                         <div className="flex items-center gap-2 drop-shadow-md">
                             <Logo className="h-10 w-10" />
-                            <span className="font-headline text-lg text-white font-bold">CMHS GRAND IFTAR</span>
+                            <span className="font-headline text-lg text-white font-bold">BYSO IFTAR MAHFIL</span>
                         </div>
-                        <p className="font-graffiti text-xl text-amber-300 text-right drop-shadow-md">Back to Where It All Began</p>
+                        <p className="font-graffiti text-xl text-amber-300 text-right drop-shadow-md">Together for Humanity</p>
                     </div>
                 </div>
             </div>

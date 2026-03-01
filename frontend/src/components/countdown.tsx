@@ -8,7 +8,7 @@ const Countdown = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const difference = +new Date('2026-03-18T10:00:00') - +new Date();
+      const difference = +new Date('2026-03-15T10:00:00') - +new Date();
       let newTimeLeft: { [key: string]: number } = {};
 
       if (difference > 0) {

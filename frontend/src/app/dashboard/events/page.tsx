@@ -205,7 +205,7 @@ const openTicketPreviewTab = (dataUrl: string, fileName: string, options?: { isI
             <head>
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Your CMHS Ticket</title>
+                <title>Your BYSO Ticket</title>
                 <style>
                     :root {
                         color-scheme: dark;
@@ -266,9 +266,9 @@ const openTicketPreviewTab = (dataUrl: string, fileName: string, options?: { isI
             </head>
             <body>
                 <div class="wrapper">
-                    <h1 style="margin:0;font-size:26px;letter-spacing:0.08em;text-transform:uppercase;color:#bae6fd;">CMHS Grand Iftar Ticket</h1>
+                    <h1 style="margin:0;font-size:26px;letter-spacing:0.08em;text-transform:uppercase;color:#bae6fd;">BYSO Iftar Mahfil Ticket</h1>
                     <p class="instructions">${primaryInstruction}<br/>${secondaryInstruction}</p>
-                    <img id="ticketImage" alt="CMHS Ticket" />
+                    <img id="ticketImage" alt="BYSO Ticket" />
                     <div class="actions">
                         <a id="downloadLink" class="button" href="#">Download Ticket</a>
                     </div>
@@ -398,7 +398,7 @@ export default function EventsPage() {
         const normalizedName = ticketData?.user?.name
             ? ticketData.user.name.toLowerCase().replace(/\s+/g, '-')
             : 'download';
-        const downloadFileName = `cmhs-grand-iftar-ticket-${normalizedName}.png`;
+        const downloadFileName = `byso-iftar-ticket-${normalizedName}.png`;
 
         const isIOS = platform === 'ios';
 
@@ -442,7 +442,7 @@ export default function EventsPage() {
         try {
             if (isIOS) {
                 const serverAsset = await requestServerTicketImage();
-                const iosFileName = `cmhs-grand-iftar-ticket-${serverAsset.ticket_code || normalizedName}.png`;
+                const iosFileName = `byso-iftar-ticket-${serverAsset.ticket_code || normalizedName}.png`;
                 const opened = openTicketPreviewTab(serverAsset.image_url, iosFileName, { isIOS: true });
                 if (!opened) {
                     alert('Please enable popups for this site to view or download your ticket.');
@@ -500,7 +500,7 @@ export default function EventsPage() {
         setIsServerDownloading(true);
         try {
             const data = await requestServerTicketImage();
-            const filename = `cmhs-grand-iftar-ticket-${data.ticket_code || ticketData?.ticket_code || 'image'}.png`;
+            const filename = `byso-iftar-ticket-${data.ticket_code || ticketData?.ticket_code || 'image'}.png`;
             downloadUrlToFile(data.image_url, filename);
         } catch (error) {
             console.error(error);
@@ -512,9 +512,9 @@ export default function EventsPage() {
 
     const getTicketTypeForCard = (batchStr: string) => {
         const batch = parseInt(batchStr);
-        if (isNaN(batch)) return 'Modern CMHSIAN';
-        if (batch <= 2012) return 'Vintage CMHSIAN';
-        return 'Modern CMHSIAN';
+        if (isNaN(batch)) return 'BYSO Member';
+        if (batch <= 2012) return 'BYSO Founding';
+        return 'BYSO Member';
     };
 
     const isIOSDevice = platform === 'ios';
@@ -525,7 +525,7 @@ export default function EventsPage() {
             <div>
                 <h1 className="text-3xl font-bold font-headline">My Event Ticket</h1>
                 <p className="text-muted-foreground">
-                    This is your official ticket for the CMHS Grand Iftar Mahfil 2026. You can download it or show this screen at the event.
+                    This is your official ticket for the BYSO Iftar Mahfil 2026. You can download it or show this screen at the event.
                 </p>
             </div>
 

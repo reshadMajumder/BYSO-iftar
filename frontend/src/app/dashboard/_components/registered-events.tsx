@@ -12,8 +12,8 @@ interface RegisteredEventsProps {
 
 export default function RegisteredEvents({ hasDonation }: RegisteredEventsProps) {
   const event = {
-    name: 'CMHS GRAND IFTAR MAHFIL 2026',
-    date: 'March 18, 2026',
+    name: 'BYSO IFTAR MAHFIL 2026',
+    date: 'March 15, 2026',
     tier: hasDonation ? 'Valued Contributor' : 'Alumni',
     paymentStatus: 'Paid',
   };

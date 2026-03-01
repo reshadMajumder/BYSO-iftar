@@ -88,14 +88,14 @@ export default function Stats() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-headline">Registration at a Glance</h2>
-          <p className="text-lg text-muted-foreground mt-2 font-body">See who's coming to our grand reunion!</p>
+          <p className="text-lg text-muted-foreground mt-2 font-body">See who's joining this year's Iftar Mahfil!</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {[
             { title: "Total Registered", value: stats.total_registered, span: `/${totalCapacity}`, icon: <Users className="h-6 w-6 text-accent" />, color: "text-accent" },
-            { title: "Male CMHSIANs", value: stats.gender_count.male || 0, icon: <User className="h-6 w-6 text-primary" />, color: "text-primary" },
-            { title: "Female CMHSIANs", value: stats.gender_count.female || 0, icon: <Heart className="h-6 w-6 text-pink-500" />, color: "text-pink-500" }
+            { title: "Male Members", value: stats.gender_count.male || 0, icon: <User className="h-6 w-6 text-primary" />, color: "text-primary" },
+            { title: "Female Members", value: stats.gender_count.female || 0, icon: <Heart className="h-6 w-6 text-pink-500" />, color: "text-pink-500" }
           ].map((item, index) => (
             <motion.div
               key={item.title}

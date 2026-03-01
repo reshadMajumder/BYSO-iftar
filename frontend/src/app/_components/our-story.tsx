@@ -14,23 +14,23 @@ export default function OurStory() {
             <BookOpen className="h-10 w-10 text-accent" />
             Our Story
           </h2>
-          <p className="text-lg text-muted-foreground mt-2">A journey through time at Comilla Modern High School.</p>
+          <p className="text-lg text-muted-foreground mt-2">A decade of humanitarian service by BYSO.</p>
         </div>
 
         <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
           <CardContent className="p-0">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-8 md:p-12 flex flex-col justify-center">
-                <h3 className="font-headline text-3xl font-bold mb-4">From Humble Beginnings to a Legacy of Excellence</h3>
+                <h3 className="font-headline text-3xl font-bold mb-4">10 Years of Serving Humanity</h3>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Established in 1993 along Nazrul Avenue in the heart of Comilla city, Comilla Modern High School began its journey as a premier combined institution. Starting as a small seed of knowledge, it has grown over the decades into a mighty tree, nurturing thousands of students who have gone on to make their mark on the world.
+                    Bangladesh Youngstar Social Organization (BYSO) has been carrying out numerous humanitarian activities over the past 10 years. The organization has supported students by bearing their educational expenses, distributed winter clothing during cold seasons, and provided relief materials to flood-affected people across the country. BYSO has also built houses for families affected by fire and floods.
                   </p>
                   <p>
-                    We remember the chalk-dusted classrooms on Nazrul Avenue, the echoing laughter in those halls, the competitive spirit on our sports fields, and the lifelong friendships forged within these walls as students of CMHS. This reunion is a celebration of that shared history, a chance to honor our past and inspire our future.
+                    During the COVID-19 pandemic, thousands of people received food assistance through BYSO. Through its self-reliance projects, more than a hundred families have become financially empowered. To combat climate change, the organization has planted over 200,000 trees. Every Ramadan, BYSO arranges special humanitarian programs including iftar distribution and Eid support for the underprivileged.
                   </p>
                   <p>
-                    Let&apos;s come together to relive those golden days and celebrate the enduring spirit of Comilla Modern High School.
+                    Alongside these humanitarian projects, BYSO also arranges the annual Iftar Mahfil to foster brotherhood and strengthen bonds among its members.
                   </p>
                 </div>
               </div>

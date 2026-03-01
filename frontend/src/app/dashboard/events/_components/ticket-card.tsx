@@ -8,7 +8,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Users, Baby, Star, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-type TicketType = 'Modern CMHSIAN' | 'Vintage CMHSIAN' | 'Premium';
+type TicketType = 'BYSO Member' | 'BYSO Founding' | 'Premium';
 
 interface TicketCardProps {
   alumniName: string;
@@ -28,7 +28,7 @@ const ticketStyles: Record<TicketType, {
   accent: string,
   border: string
 }> = {
-  'Modern CMHSIAN': {
+  'BYSO Member': {
     bg: 'from-[#2d1b4e] via-[#5d3a7a] to-[#2d1b4e]',
     text: 'text-white',
     badge: 'bg-gradient-to-r from-sky-200 to-blue-300 text-blue-900',
@@ -37,7 +37,7 @@ const ticketStyles: Record<TicketType, {
     accent: 'border-sky-200/40',
     border: 'from-sky-200/30 via-blue-300/50 to-sky-200/30'
   },
-  'Vintage CMHSIAN': {
+  'BYSO Founding': {
     bg: 'from-[#2d1b4e] via-[#5d3a7a] to-[#2d1b4e]',
     text: 'text-white',
     badge: 'bg-gradient-to-r from-sky-200 to-blue-300 text-blue-900',
@@ -193,7 +193,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
           <div>
             <div className="flex items-center gap-3 mb-4">
               {/* <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-bold tracking-widest", styles.badge)}>
-                CMHS ALUMNI ASSOCIATION
+                BYSO
               </div> */}
               {isDonator && (
                 <div className={cn("flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[9px] font-bold tracking-wider", styles.badge)}>
@@ -205,7 +205,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
 
             <div className="mb-6">
               <h2 className={cn("text-6xl tracking-tight leading-none mb-2", styles.headline)}>
-                CMHS Grand Iftar
+                BYSO Iftar
               </h2>
               <div className="flex items-center gap-3">
                 <div className={cn("h-[1.5px] w-12 bg-gradient-to-r", styles.border)} />
@@ -246,7 +246,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
           <div className="flex items-center gap-10 opacity-80">
             <div className="flex flex-col">
               <p className="text-[9px] uppercase tracking-widest opacity-60 mb-1">Date</p>
-              <p className="text-xl font-bold">March 18, 2026</p>
+              <p className="text-xl font-bold">March 15, 2026</p>
             </div>
 
             <div className={cn("w-[1px] h-8 bg-gradient-to-b", styles.border)} />
@@ -260,7 +260,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
 
             <div className="flex flex-col">
               <p className="text-[9px] uppercase tracking-widest opacity-60 mb-1">Venue</p>
-              <p className="text-xl font-bold">CMHS Campus</p>
+              <p className="text-xl font-bold">China Garden Hall</p>
             </div>
           </div>
         </div>
@@ -303,7 +303,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
         {/* Center: Powered by */}
         <div className="flex-1 flex justify-center">
           <span className="text-[8px] text-white opacity-90 tracking-wider font-semibold drop-shadow-sm">
-            Powered by: <span className="font-bold">CMHS ALUMNI ASSOCIATION</span>
+            Powered by: <span className="font-bold">BYSO</span>
           </span>
         </div>
         {/* Right: System Generated */}
