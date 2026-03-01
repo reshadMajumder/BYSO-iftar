@@ -55,7 +55,7 @@ def render_ticket_html(ticket):
     # Prepare context for template
     context = {
         'name': user.name or 'Guest',
-        'batch': user.batch or 'N/A',
+        'batch': user.position or 'N/A',
         'phone': user.phone,
         'qr_code_svg': qr_code_svg,
         'ticket_code_short': ticket.ticket_code,

@@ -24,7 +24,7 @@ export default function Loader() {
     >
       <div className="relative">
         <Image
-          src="https://res.cloudinary.com/dzdf1wu5x/image/upload/v1771995486/1-removebg-preview_wpxnns.png"
+          src="https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772363577/LOGO_1_3x_pcnffh.png"
           alt="Loading..."
           width={600}
           height={600}

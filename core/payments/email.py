@@ -43,7 +43,7 @@ def send_email(payment) -> bool:
 
     user_name = getattr(user, "name", "Unknown") if user else "Unknown"
     user_phone = getattr(user, "phone", "Unknown") if user else "Unknown"
-    user_batch = getattr(user, "batch", "Unknown") if user else "Unknown"
+    user_position = getattr(user, "position", "Unknown") if user else "Unknown"
 
     created_at = getattr(payment, "created_at", None)
     created_at_str = (
@@ -57,7 +57,7 @@ def send_email(payment) -> bool:
         "User Details:\n"
         f"- Name: {user_name}\n"
         f"- Phone: {user_phone}\n"
-        f"- Batch: {user_batch}\n\n"
+        f"- Position: {user_position}\n\n"
         "Payment Details:\n"
         f"- Type: {payment.payment_type}\n"
         f"- Amount: {payment.amount}\n"

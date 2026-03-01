@@ -9,18 +9,15 @@ import { Ticket } from 'lucide-react';
 export default function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center text-center text-white">
-      {/* Fixed Background Video */}
+      {/* Fixed Background Image */}
       <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+        <img
+          src="https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772362722/Screenshot_2026-03-01_165814_kyivui.png"
+          alt="BYSO Iftar Mahfil Background"
+          className="absolute top-0 left-0 w-full h-full object-cover object-center"
+          style={{ zIndex: 0 }}
+        />
         <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
-        <iframe
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
-          style={{ width: '177.77vh', height: '100vw' }} // Maintain 16:9 aspect ratio
-          src="https://www.youtube.com/embed/kIlX43frIQk?autoplay=1&mute=1&loop=1&playlist=kIlX43frIQk&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&rel=0"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          title="Hero Background Video"
-        ></iframe>
       </div>
 
       {/* Scrolling Content */}

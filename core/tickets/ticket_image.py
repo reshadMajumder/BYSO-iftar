@@ -251,7 +251,7 @@ def render_ticket_image(ticket):
     raw_name = (user.name or 'Guest').strip()
     name_parts = raw_name.split()
     name = ' '.join(name_parts[:2]) if len(name_parts) > 2 else raw_name
-    batch = user.batch or 'N/A'
+    batch = user.position or 'N/A'
     phone = user.phone or ''
     ticket_code = ticket.ticket_code or ''
     qr_data = str(ticket_code)
@@ -641,7 +641,7 @@ def render_ticket_image(ticket):
 
     batch_bb = draw.textbbox((0, 0), batch, font=font_batch)
     batch_w = batch_bb[2] - batch_bb[0]
-    lbl_batch_bb = draw.textbbox((0, 0), "BATCH", font=font_label)
+    lbl_batch_bb = draw.textbbox((0, 0), "POSITION", font=font_label)
     lbl_batch_w = lbl_batch_bb[2] - lbl_batch_bb[0]
     col2_w = max(batch_w, lbl_batch_w)
 

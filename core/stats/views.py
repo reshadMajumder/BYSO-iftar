@@ -12,7 +12,7 @@ class RegistrationStatsView(APIView):
     """
     Returns:
     - total registration count
-    - batch wise registration count
+    - position wise registration count
     - male/female/other count
     Only considers users with approved registration payment.
     """
@@ -29,20 +29,19 @@ class RegistrationStatsView(APIView):
 
         total_count = users.count()
 
-        # Clean batch values and group by batch
-        batch_counts = (
-            users.exclude(batch__isnull=True).exclude(batch__exact='')
-            .values('batch')
+        # Group by position
+        position_counts = (
+            users.exclude(position__isnull=True).exclude(position__exact='')
+            .values('position')
             .annotate(count=Count('id'))
-            .order_by('batch')
+            .order_by('position')
         )
 
         gender_counts = users.values('gender').annotate(count=Count('id'))
 
-        # normalize batch keys as string
         data = {
             "total_registered": total_count,
-            "batch_wise_count": {str(b['batch']).strip(): b['count'] for b in batch_counts},
+            "batch_wise_count": {str(p['position']).strip(): p['count'] for p in position_counts},
             "gender_count": {g['gender'] or "unknown": g['count'] for g in gender_counts},
         }
 
@@ -55,8 +54,7 @@ class DonationStatsView(APIView):
     """
     Returns a list of all approved donations with:
     - username
-    - batch
-    - profile image (if available)
+    - position
     - donation amount
     - total donation sum
     """
@@ -77,16 +75,8 @@ class DonationStatsView(APIView):
             total_donation += float(d.amount)
             donation_list.append({
                 "name": d.user.name,
-                "batch": d.user.batch,
-                # use profile_image field from User model (CloudinaryField)
-                "image": (
-                    (d.user.profile_image.url if getattr(d.user, 'profile_image', None) else None)
-                    and (
-                        d.user.profile_image.url
-                        if str(d.user.profile_image.url).startswith('http')
-                        else request.build_absolute_uri(d.user.profile_image.url)
-                    )
-                ),
+                "position": d.user.position,
+                "image": None,
                 "amount": float(d.amount),
                 "transaction_id": d.transaction_id,
                 "method": d.method,
