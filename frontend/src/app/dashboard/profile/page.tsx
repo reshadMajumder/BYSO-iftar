@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import ProfileForm, { type ProfileFormValues } from './_components/profile-form';
 import UserProfileCard from './_components/user-profile-card';
-import { Button } from '@/components/ui/button';
-import { Upload } from 'lucide-react';
+
 import { fetchWithAuth } from '@/lib/api';
 import { API_BASE_URL } from '@/lib/constants';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -22,7 +21,14 @@ export default function ProfilePage() {
           throw new Error('Failed to fetch profile data');
         }
         const data = await response.json();
-        setProfileData(data);
+        // Pick only form-relevant fields and convert nulls → undefined
+        setProfileData({
+          name: data.name ?? '',
+          phone: data.phone ?? '',
+          position: data.position ?? undefined,
+          religion: data.religion ?? undefined,
+          gender: data.gender ?? undefined,
+        });
       } catch (error) {
         console.error(error);
       } finally {
@@ -87,10 +93,6 @@ export default function ProfilePage() {
         <div className="lg:col-span-1">
           <Card className="flex flex-col items-center text-center p-4">
             {profileData && <UserProfileCard user={profileData} />}
-            <Button variant="outline" className="mt-4">
-              <Upload className="mr-2 h-4 w-4" />
-              Change Photo
-            </Button>
           </Card>
         </div>
         <div className="lg:col-span-2">

@@ -25,18 +25,14 @@ import {
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { fetchWithAuth } from '@/lib/api';
-import { Switch } from '@/components/ui/switch';
+import { API_BASE_URL } from '@/lib/constants';
 
 const profileFormSchema = z.object({
     name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
     phone: z.string().optional(),
-    profession: z.string().min(2, { message: 'Profession is required.' }),
-    batch: z.coerce.number().int().min(1980, 'Invalid batch year.').max(new Date().getFullYear(), 'Invalid batch year.').optional(),
-    subject: z.enum(['science', 'commerce', 'humanities']).optional(),
-    religion: z.string().optional(),
-    gender: z.enum(['male', 'female', 'other']).optional(),
-    profile_image: z.any().optional(),
-    add_my_image_to_magazine: z.boolean().optional(),
+    position: z.enum(['founding_member', 'committee_leader', 'general_member', 'school_member']).nullable().optional(),
+    religion: z.enum(['islam', 'hinduism', 'christianity', 'buddhism', 'other']).nullable().optional(),
+    gender: z.enum(['male', 'female', 'other']).nullable().optional(),
 });
 
 export type ProfileFormValues = z.infer<typeof profileFormSchema>;
@@ -137,64 +133,30 @@ export default function ProfileForm({ defaultValues }: ProfileFormProps) {
 
                 <FormField
                     control={form.control}
-                    name="batch"
+                    name="position"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Batch Year</FormLabel>
-                            <FormControl>
-                                <Input type="number" placeholder="e.g., 2005" {...field} disabled />
-                            </FormControl>
-                            <FormDescription>Your batch year cannot be changed.</FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="profession"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Profession</FormLabel>
-                            <FormControl>
-                                <Input placeholder="e.g., Software Engineer" {...field} />
-                            </FormControl>
+                            <FormLabel>Position</FormLabel>
+                            <Select onValueChange={field.onChange} value={field.value ?? ''}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select your position" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="founding_member">Founding Member</SelectItem>
+                                    <SelectItem value="committee_leader">Committee Leader</SelectItem>
+                                    <SelectItem value="general_member">General Member</SelectItem>
+                                    <SelectItem value="school_member">School Member</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FormDescription>Your membership position in BYSO.</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                        control={form.control}
-                        name="subject"
-                        render={({ field }) => (
-                            <FormItem className="space-y-3">
-                                <FormLabel>Subject</FormLabel>
-                                <FormControl>
-                                    <RadioGroup
-                                        onValueChange={field.onChange}
-                                        defaultValue={field.value}
-                                        className="flex flex-col space-y-1"
-                                    >
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl><RadioGroupItem value="science" /></FormControl>
-                                            <FormLabel className="font-normal">Science</FormLabel>
-                                        </FormItem>
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl><RadioGroupItem value="commerce" /></FormControl>
-                                            <FormLabel className="font-normal">Commerce</FormLabel>
-                                        </FormItem>
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl><RadioGroupItem value="humanities" /></FormControl>
-                                            <FormLabel className="font-normal">Humanities</FormLabel>
-                                        </FormItem>
-                                    </RadioGroup>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
                     <FormField
                         control={form.control}
                         name="gender"
@@ -204,7 +166,7 @@ export default function ProfileForm({ defaultValues }: ProfileFormProps) {
                                 <FormControl>
                                     <RadioGroup
                                         onValueChange={field.onChange}
-                                        defaultValue={field.value}
+                                        value={field.value ?? ''}
                                         className="flex flex-col space-y-1"
                                     >
                                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -234,7 +196,7 @@ export default function ProfileForm({ defaultValues }: ProfileFormProps) {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Religion</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <Select onValueChange={field.onChange} value={field.value ?? ''}>
                                     <FormControl>
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select your religion" />
@@ -243,34 +205,12 @@ export default function ProfileForm({ defaultValues }: ProfileFormProps) {
                                     <SelectContent>
                                         <SelectItem value="islam">Islam</SelectItem>
                                         <SelectItem value="hinduism">Hinduism</SelectItem>
+                                        <SelectItem value="christianity">Christianity</SelectItem>
                                         <SelectItem value="buddhism">Buddhism</SelectItem>
                                         <SelectItem value="other">Other</SelectItem>
                                     </SelectContent>
                                 </Select>
                                 <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-
-                    <FormField
-                        control={form.control}
-                        name="add_my_image_to_magazine"
-                        render={({ field }) => (
-                            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 h-full">
-                                <div className="space-y-0.5">
-                                    <FormLabel className="text-base">
-                                        Magazine Image?
-                                    </FormLabel>
-                                    <FormDescription className="text-xs">
-                                        Featured in the reunion magazine.
-                                    </FormDescription>
-                                </div>
-                                <FormControl>
-                                    <Switch
-                                        checked={field.value}
-                                        onCheckedChange={field.onChange}
-                                    />
-                                </FormControl>
                             </FormItem>
                         )}
                     />
