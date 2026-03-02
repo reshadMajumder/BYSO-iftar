@@ -39,8 +39,8 @@ export default function ContactPage() {
                                 <Mail className="h-6 w-6 text-primary mt-1" />
                                 <div>
                                     <h4 className="font-semibold">Email</h4>
-                                    <a href="mailto:byso.org@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                                        byso.org@gmail.com
+                                    <a href="mailto:auyonmazumder06@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                        auyonmazumder06@gmail.com
                                     </a>
                                 </div>
                             </div>
