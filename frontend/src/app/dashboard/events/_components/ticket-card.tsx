@@ -28,7 +28,7 @@ const ticketStyles: Record<TicketType, {
   border: string
 }> = {
   'BYSO Member': {
-    bg: 'from-[#2d1b4e] via-[#5d3a7a] to-[#2d1b4e]',
+    bg: 'from-[#0369a1] via-[#0ea5e9] to-[#0369a1]',
     text: 'text-white',
     badge: 'bg-gradient-to-r from-sky-200 to-blue-300 text-blue-900',
     headline: 'font-bold font-headline text-sky-100',
@@ -37,7 +37,7 @@ const ticketStyles: Record<TicketType, {
     border: 'from-sky-200/30 via-blue-300/50 to-sky-200/30'
   },
   'BYSO Founding': {
-    bg: 'from-[#2d1b4e] via-[#5d3a7a] to-[#2d1b4e]',
+    bg: 'from-[#0369a1] via-[#0ea5e9] to-[#0369a1]',
     text: 'text-white',
     badge: 'bg-gradient-to-r from-sky-200 to-blue-300 text-blue-900',
     headline: 'font-bold font-headline text-sky-100',
@@ -46,7 +46,7 @@ const ticketStyles: Record<TicketType, {
     border: 'from-sky-200/30 via-blue-300/50 to-sky-200/30'
   },
   'Premium': {
-    bg: 'from-[#2d1b4e] via-[#5d3a7a] to-[#2d1b4e]',
+    bg: 'from-[#0369a1] via-[#0ea5e9] to-[#0369a1]',
     text: 'text-white',
     badge: 'bg-gradient-to-r from-sky-200 via-blue-300 to-sky-300 text-blue-900',
     headline: 'font-headline font-bold text-sky-100',
@@ -146,7 +146,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
         {/* Background Image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/bg.png"
+          src="https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772438414/641291816_1274864017867852_5128634694080429819_n_ad78u0.jpg"
           alt=""
           aria-hidden="true"
           crossOrigin="anonymous"
@@ -165,7 +165,7 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
         </div>
 
         {/* Gradient Overlays for depth and readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-transparent to-pink-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-900/40 via-transparent to-blue-900/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
       </div>

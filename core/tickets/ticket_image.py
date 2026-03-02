@@ -194,9 +194,9 @@ def get_font(name, size):
 # ── Image asset helpers ─────────────────────────────────────────────
 IMAGE_CACHE_DIR = os.path.join(tempfile.gettempdir(), 'cmhs_ticket_images')
 
-BG_IMAGE_URL = 'https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772363577/LOGO_1_3x_pcnffh.png'
+BG_IMAGE_URL = 'https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772438414/641291816_1274864017867852_5128634694080429819_n_ad78u0.jpg'
 LANTERN_URL = 'https://res.cloudinary.com/dzdf1wu5x/image/upload/v1771999550/85213-removebg-preview_sgldmm.png'
-LOGO_URL = 'https://res.cloudinary.com/dzdf1wu5x/image/upload/v1771998698/Expressive_Graffiti_Logo_for_Ramadan_Iftar-removebg-preview_ixylto.png'
+LOGO_URL = 'https://res.cloudinary.com/dzgs1uhn0/image/upload/v1772363577/LOGO_1_3x_pcnffh.png'
 
 
 def _download_image(url):
@@ -284,10 +284,10 @@ def render_ticket_image(ticket):
     font_scan        = get_font('PTSans-Regular', 9)               # .scan-text 7px
 
     # ================================================================
-    #  LAYER 1 - Base gradient  (#2d1b4e -> #5d3a7a -> #2d1b4e  135deg)
+    #  LAYER 1 - Base gradient  (sky blue theme: #0369a1 -> #0ea5e9 -> #0369a1  135deg)
     # ================================================================
-    c1 = hex_to_rgb('#2d1b4e')
-    c2 = hex_to_rgb('#5d3a7a')
+    c1 = hex_to_rgb('#0369a1')
+    c2 = hex_to_rgb('#0ea5e9')
     img = _make_diagonal_gradient(TICKET_W, TICKET_H, c1, c2, three_stop=True)
 
     # Round the corners by applying an alpha mask
@@ -366,7 +366,7 @@ def render_ticket_image(ticket):
     # ================================================================
     #  LAYER 5 - Gradient overlays (purple->rose / top-dark / sides)
     # ================================================================
-    # Overlay 1: diagonal purple-900/40 -> transparent -> pink-900/30
+    # Overlay 1: diagonal sky-900/40 -> transparent -> blue-900/30
     sw, sh = max(TICKET_W // 10, 1), max(TICKET_H // 10, 1)
     ov1_sm = Image.new('RGBA', (sw, sh), (0, 0, 0, 0))
     px1 = ov1_sm.load()
@@ -375,10 +375,10 @@ def render_ticket_image(ticket):
             t = (sx / sw + sy / sh) / 2.0
             if t < 0.33:
                 a = int(0.4 * 255 * (1 - t / 0.33))
-                px1[sx, sy] = (88, 28, 135, a)
+                px1[sx, sy] = (12, 74, 110, a)  # sky-900
             elif t > 0.66:
                 a = int(0.3 * 255 * ((t - 0.66) / 0.34))
-                px1[sx, sy] = (136, 19, 55, a)
+                px1[sx, sy] = (30, 58, 138, a)  # blue-900
     ov1 = ov1_sm.resize((TICKET_W, TICKET_H), Image.LANCZOS)
     img = Image.alpha_composite(img, ov1)
 
@@ -624,10 +624,10 @@ def render_ticket_image(ticket):
     draw.text(
         (cx0 + pad_x, g1_y),
         title_text,
-        fill=hex_to_rgb('#e0f2fe'),
+        fill=hex_to_rgb('#f0f9ff'),
         font=font_title,
         stroke_width=1,
-        stroke_fill=hex_to_rgb('#cbd5ff')
+        stroke_fill=hex_to_rgb('#bae6fd')
     )
 
     # Subtitle row: decorative line (w-12 = 48px) + gap-3 (12px) + text
@@ -640,7 +640,7 @@ def render_ticket_image(ticket):
     )
     draw.text(
         (line_x + 48 + 12, sub_y),
-        sub_text, fill=hex_to_rgb('#dbeafe'), font=font_subtitle
+        sub_text, fill=hex_to_rgb('#e0f2fe'), font=font_subtitle
     )
 
     # ── Draw Group 2: Info Box ──────────────────────────────────────
