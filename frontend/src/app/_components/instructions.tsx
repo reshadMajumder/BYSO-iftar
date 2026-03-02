@@ -12,14 +12,14 @@ export default function Instructions() {
         <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
           <CardContent className="p-4">
             <div className="aspect-video bg-black rounded-lg overflow-hidden relative">
-              <iframe
-                src="https://www.youtube.com/embed/gFCgXzl8bzo"
+                <iframe
+                src="https://www.youtube.com/embed/scH57VAkX4Y"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 className="absolute top-0 left-0 w-full h-full"
-              ></iframe>
+                ></iframe>
             </div>
           </CardContent>
         </Card>
