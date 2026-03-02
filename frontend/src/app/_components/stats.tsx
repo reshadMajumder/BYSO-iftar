@@ -14,10 +14,12 @@ const INITIAL_VISIBLE_COUNT = 12;
 
 interface RegistrationStats {
   total_registered: number;
-  batch_wise_count: { [key: string]: number };
+  unit_wise_count: { [key: string]: number };
   gender_count: {
     male: number;
     female: number;
+    other?: number;
+    unknown?: number;
   };
 }
 
@@ -44,14 +46,14 @@ export default function Stats() {
     fetchStats();
   }, []);
 
-  const batchData = stats
-    ? Object.entries(stats.batch_wise_count)
-      .map(([year, count]) => ({ name: year, count }))
-      .sort((a, b) => Number(b.name) - Number(a.name))
+  const unitData = stats
+    ? Object.entries(stats.unit_wise_count)
+      .map(([unit, count]) => ({ name: unit, count }))
+      .sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
   const showMore = () => {
-    setVisibleCount(batchData.length);
+    setVisibleCount(unitData.length);
   };
 
   if (isLoading) {
@@ -130,10 +132,10 @@ export default function Stats() {
         >
           <Card className="shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-center text-2xl font-headline">Batch-wise Registrations</CardTitle>
+              <CardTitle className="text-center text-2xl font-headline">Unit-wise Registrations</CardTitle>
             </CardHeader>
             <CardContent>
-              {batchData.length === 0 ? (
+              {unitData.length === 0 ? (
                 <div className="text-center py-12 bg-accent/5 rounded-xl border border-dashed border-accent/20">
                   <p className="text-xl text-muted-foreground font-body">
                     No registrations yet. <br />
@@ -142,9 +144,9 @@ export default function Stats() {
                 </div>
               ) : (
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {batchData.slice(0, visibleCount).map((batch, index) => (
+                  {unitData.slice(0, visibleCount).map((unit, index) => (
                     <motion.div
-                      key={batch.name}
+                      key={unit.name}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -152,10 +154,10 @@ export default function Stats() {
                     >
                       <Card className="text-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                         <CardHeader className="p-4">
-                          <CardTitle className="text-lg font-headline">{batch.name}</CardTitle>
+                          <CardTitle className="text-lg font-headline">{unit.name}</CardTitle>
                         </CardHeader>
                         <CardContent className="p-4">
-                          <p className="text-3xl font-bold text-primary">{batch.count}</p>
+                          <p className="text-3xl font-bold text-primary">{unit.count}</p>
                           <p className="text-sm text-muted-foreground">Registered</p>
                         </CardContent>
                       </Card>
@@ -164,7 +166,7 @@ export default function Stats() {
                 </div>
               )}
             </CardContent>
-            {visibleCount < batchData.length && (
+            {visibleCount < unitData.length && (
               <CardFooter className="justify-center">
                 <Button onClick={showMore} variant="outline" className="hover:bg-primary/10">
                   <Plus className="mr-2 h-4 w-4" />

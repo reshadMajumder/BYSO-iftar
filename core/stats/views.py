@@ -29,19 +29,19 @@ class RegistrationStatsView(APIView):
 
         total_count = users.count()
 
-        # Group by position
-        position_counts = (
-            users.exclude(position__isnull=True).exclude(position__exact='')
-            .values('position')
+        # Group by unit_name
+        unit_counts = (
+            users.exclude(unit_name__isnull=True).exclude(unit_name__exact='')
+            .values('unit_name')
             .annotate(count=Count('id'))
-            .order_by('position')
+            .order_by('unit_name')
         )
 
         gender_counts = users.values('gender').annotate(count=Count('id'))
 
         data = {
             "total_registered": total_count,
-            "batch_wise_count": {str(p['position']).strip(): p['count'] for p in position_counts},
+            "unit_wise_count": {str(u['unit_name']).strip(): u['count'] for u in unit_counts},
             "gender_count": {g['gender'] or "unknown": g['count'] for g in gender_counts},
         }
 
