@@ -212,10 +212,10 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = 'accounts.User'
 
 JAZZMIN_SETTINGS = {
-    "site_title": "CMHS IFTER Admin",
-    "site_header": "CMHS IFTER",
-    "site_brand": "CMHS IFTER",
-    "welcome_sign": "Welcome to CMHS IFTER Admin",
+    "site_title": "BYSO IFTER Admin",
+    "site_header": "BYSO IFTER",
+    "site_brand": "BYSO IFTER",
+    "welcome_sign": "Welcome to BYSO IFTER Admin",
     
     # Custom CSS and JS for dashboard
     "custom_css": None,
@@ -286,7 +286,7 @@ JAZZMIN_SETTINGS = {
     "logo_icon": None,
     
     # Copyright
-    "copyright": "CMHS ALUMNI ASSOSIATION 2026",
+    "copyright": "BYSO ALUMNI ASSOSIATION 2026",
 }
 
 SECURE_BROWSER_XSS_FILTER = True
