@@ -799,7 +799,7 @@ def render_ticket_image(ticket):
     draw.line([(0, footer_y), (TICKET_W, footer_y)], fill=(255, 255, 255, 25), width=1)
 
     fl = "Powered by: "
-    fl_bold = "CMHS ALUMNI ASSOCIATION"
+    fl_bold = "BYSO"
     flb = draw.textbbox((0, 0), fl, font=font_footer)
     fl_w = flb[2] - flb[0]
     fl_y = footer_y + (FOOTER_H - (flb[3] - flb[1])) // 2
