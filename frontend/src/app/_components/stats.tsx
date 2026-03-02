@@ -9,7 +9,7 @@ import { API_BASE_URL } from '@/lib/constants';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-const totalCapacity = 1000;
+const totalCapacity = 200;
 const INITIAL_VISIBLE_COUNT = 12;
 
 // Function to format unit names (convert underscores to spaces and capitalize)
