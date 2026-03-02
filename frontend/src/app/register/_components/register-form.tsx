@@ -35,6 +35,12 @@ const registerFormSchema = z.object({
   position: z.enum(['founding_member', 'committee_leader', 'general_member', 'school_member'], {
     required_error: 'Please select your membership type.',
   }),
+  bloodgroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'other'], {
+    required_error: 'Please select your blood group.',
+  }),
+  unit_name: z.enum(['cumilla_district', 'burichang_upazila', 'debidwer_upazila', 'barura_upazila', 'sadar_dakshin_upazila', 'brahmanpara_upazila', 'comilla_modern_high_school', 'comilla_high_school'], {
+    required_error: 'Please select your unit.',
+  }),
   religion: z.string().optional(),
   gender: z.enum(['male', 'female', 'other'], { required_error: 'Please select a gender.' }),
   agree: z.boolean().refine((val) => val === true, {
@@ -165,6 +171,64 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="bloodgroup"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Blood Group</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select your blood group" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="A+">A+</SelectItem>
+                    <SelectItem value="A-">A-</SelectItem>
+                    <SelectItem value="B+">B+</SelectItem>
+                    <SelectItem value="B-">B-</SelectItem>
+                    <SelectItem value="AB+">AB+</SelectItem>
+                    <SelectItem value="AB-">AB-</SelectItem>
+                    <SelectItem value="O+">O+</SelectItem>
+                    <SelectItem value="O-">O-</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="unit_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Unit Name</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select your unit" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="cumilla_district">Cumilla District</SelectItem>
+                    <SelectItem value="burichang_upazila">Burichang Upazila</SelectItem>
+                    <SelectItem value="debidwer_upazila">Debidwer Upazila</SelectItem>
+                    <SelectItem value="barura_upazila">Barura Upazila</SelectItem>
+                    <SelectItem value="sadar_dakshin_upazila">Sadar Dakshin Upazila</SelectItem>
+                    <SelectItem value="brahmanpara_upazila">Brahmanpara Upazila</SelectItem>
+                    <SelectItem value="comilla_modern_high_school">Comilla Modern High School</SelectItem>
+                    <SelectItem value="comilla_high_school">Comilla High School</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField

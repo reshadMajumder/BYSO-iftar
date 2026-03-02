@@ -31,6 +31,8 @@ const profileFormSchema = z.object({
     name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
     phone: z.string().optional(),
     position: z.enum(['founding_member', 'committee_leader', 'general_member', 'school_member']).nullable().optional(),
+    bloodgroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'other']).nullable().optional(),
+    unit_name: z.enum(['cumilla_district', 'burichang_upazila', 'debidwer_upazila', 'barura_upazila', 'sadar_dakshin_upazila', 'brahmanpara_upazila', 'comilla_modern_high_school', 'comilla_high_school']).nullable().optional(),
     religion: z.enum(['islam', 'hinduism', 'christianity', 'buddhism', 'other']).nullable().optional(),
     gender: z.enum(['male', 'female', 'other']).nullable().optional(),
 });
@@ -130,6 +132,34 @@ export default function ProfileForm({ defaultValues }: ProfileFormProps) {
                         )}
                     />
                 </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField
+                            control={form.control}
+                            name="bloodgroup"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Blood Group</FormLabel>
+                                    <FormControl>
+                                            <Input value={field.value ?? defaultValues.bloodgroup ?? ''} disabled />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="unit_name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Unit Name</FormLabel>
+                                    <FormControl>
+                                            <Input value={field.value ? unitNameLabel(field.value) : (defaultValues.unit_name ? unitNameLabel(defaultValues.unit_name) : '')} disabled />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
 
                 <FormField
                     control={form.control}
@@ -222,4 +252,18 @@ export default function ProfileForm({ defaultValues }: ProfileFormProps) {
             </form>
         </Form>
     );
+}
+
+function unitNameLabel(value: string) {
+    const labels: Record<string, string> = {
+        cumilla_district: 'Cumilla District',
+        burichang_upazila: 'Burichang Upazila',
+        debidwer_upazila: 'Debidwer Upazila',
+        barura_upazila: 'Barura Upazila',
+        sadar_dakshin_upazila: 'Sadar Dakshin Upazila',
+        brahmanpara_upazila: 'Brahmanpara Upazila',
+        comilla_modern_high_school: 'Comilla Modern High School',
+        comilla_high_school: 'Comilla High School',
+    };
+    return labels[value] ?? value;
 }

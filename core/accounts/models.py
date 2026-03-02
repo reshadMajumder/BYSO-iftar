@@ -23,10 +23,35 @@ class User(AbstractBaseUser, PermissionsMixin):
     RELIGION_CHOICES = [('islam','Islam'),('hinduism','Hinduism'),('christianity','Christianity'),('buddhism','Buddhism'),('other','Other')]
     POSITION_CHOICES = [('founding_member', 'Founding Member'), ('committee_leader', 'Committee Leader'), ('general_member', 'General Member'), ('school_member', 'School Member')]
 
+    BLOODGROUP_CHOICES = [
+        ('A+', 'A+'),
+        ('A-', 'A-'),
+        ('B+', 'B+'),
+        ('B-', 'B-'),
+        ('AB+', 'AB+'),
+        ('AB-', 'AB-'),
+        ('O+', 'O+'),
+        ('O-', 'O-'),
+        ('other', 'Other'),
+    ]
+
+    UNIT_NAME_CHOICES = [
+        ('cumilla_district', 'Cumilla District'),
+        ('burichang_upazila', 'Burichang Upazila'),
+        ('debidwer_upazila', 'Debidwer Upazila'),
+        ('barura_upazila', 'Barura Upazila'),
+        ('sadar_dakshin_upazila', 'Sadar Dakshin Upazila'),
+        ('brahmanpara_upazila', 'Brahmanpara Upazila'),
+        ('comilla_modern_high_school', 'Comilla Modern High School'),
+        ('comilla_high_school', 'Comilla High School'),
+    ]
+
 
     phone = models.CharField(max_length=15, unique=True)
     name = models.CharField(max_length=255,null=True,blank=True)
     position = models.CharField(max_length=255,choices=POSITION_CHOICES,null=True,blank=True)
+    bloodgroup = models.CharField(max_length=5, choices=BLOODGROUP_CHOICES, null=True, blank=True)
+    unit_name = models.CharField(max_length=50, choices=UNIT_NAME_CHOICES, null=True, blank=True)
     religion = models.CharField(max_length=20, choices=RELIGION_CHOICES, null=True, blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
     is_active = models.BooleanField(default=True)

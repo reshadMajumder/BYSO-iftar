@@ -26,6 +26,8 @@ export default function ProfilePage() {
           name: data.name ?? '',
           phone: data.phone ?? '',
           position: data.position ?? undefined,
+          bloodgroup: data.bloodgroup ?? undefined,
+          unit_name: data.unit_name ?? undefined,
           religion: data.religion ?? undefined,
           gender: data.gender ?? undefined,
         });
