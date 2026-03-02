@@ -310,7 +310,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://cmhs-ifter-api.vercel.app",
     "https://cmhs-ifter-production.up.railway.app",
     "https://byso-iftar-admin.reshad.dev",
-    "byso.reshad.dev",
+    "https://byso.reshad.dev",
 
     ]
 
@@ -320,7 +320,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://cmhs-ifter.vercel.app",
     "https://iftar.cmhsians.com",
     "https://byso-iftar-mahfil-2026.reshad.dev",
-    "byso.reshad.dev",
+    "https://byso.reshad.dev",
 
     
 
