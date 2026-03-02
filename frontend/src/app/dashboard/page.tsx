@@ -109,16 +109,16 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex flex-wrap gap-4">
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-bold text-primary uppercase">Mitul</span>
-                    <a href="tel:+8801719454545" className="text-sm font-semibold hover:underline">01719454545</a>
+                    <span className="text-[10px] font-bold text-primary uppercase">Auyon Mazumder</span>
+                    <a href="tel:+8801878987574" className="text-sm font-semibold hover:underline">01878987574</a>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-bold text-primary uppercase">Shad</span>
-                    <a href="tel:+8801401165474" className="text-sm font-semibold hover:underline">01401165474</a>
+                    <span className="text-[10px] font-bold text-primary uppercase">Riad Hossain</span>
+                    <a href="tel:+8801719913297" className="text-sm font-semibold hover:underline">01719913297</a>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-bold text-primary uppercase">Rohan</span>
-                    <a href="tel:+8801754658253" className="text-sm font-semibold hover:underline">01754658253</a>
+                    <span className="text-[10px] font-bold text-primary uppercase">Tasnim Ahamad</span>
+                    <a href="tel:+8801314360793" className="text-sm font-semibold hover:underline">01314360793</a>
                   </div>
                 </div>
               </div>
