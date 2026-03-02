@@ -311,8 +311,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://cmhs-ifter-production.up.railway.app",
     "https://byso-iftar-admin.reshad.dev",
     "https://byso.reshad.dev",
-
-    ]
+]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -321,9 +320,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://iftar.cmhsians.com",
     "https://byso-iftar-mahfil-2026.reshad.dev",
     "https://byso.reshad.dev",
-
-    
-
 ]
 
 if DEBUG:
