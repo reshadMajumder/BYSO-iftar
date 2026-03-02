@@ -553,7 +553,7 @@ export default function EventsPage() {
                             secretCode={ticketData.ticket_code}
                             isDonator={ticketData.has_donation}
                             phone={ticketData.user.phone}
-                            batch={ticketData.user.batch}
+                            unitName={ticketData.user.unit_name}
                         />
                     </div>
                     <div className="text-center mt-6 space-y-3">

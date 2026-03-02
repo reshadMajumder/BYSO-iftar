@@ -251,7 +251,18 @@ def render_ticket_image(ticket):
     raw_name = (user.name or 'Guest').strip()
     name_parts = raw_name.split()
     name = ' '.join(name_parts[:2]) if len(name_parts) > 2 else raw_name
-    batch = user.position or 'N/A'
+    unit_name_map = {
+        'cumilla_district': 'Cumilla District',
+        'burichang_upazila': 'Burichang Upazila',
+        'debidwer_upazila': 'Debidwer Upazila',
+        'barura_upazila': 'Barura Upazila',
+        'sadar_dakshin_upazila': 'Sadar Dakshin Upazila',
+        'brahmanpara_upazila': 'Brahmanpara Upazila',
+        'comilla_modern_high_school': 'Comilla Modern High School',
+        'comilla_high_school': 'Comilla High School',
+    }
+    raw_unit = user.unit_name or ''
+    batch = unit_name_map.get(raw_unit, raw_unit) or 'N/A'
     phone = user.phone or ''
     ticket_code = ticket.ticket_code or ''
     qr_data = str(ticket_code)
@@ -641,7 +652,7 @@ def render_ticket_image(ticket):
 
     batch_bb = draw.textbbox((0, 0), batch, font=font_batch)
     batch_w = batch_bb[2] - batch_bb[0]
-    lbl_batch_bb = draw.textbbox((0, 0), "POSITION", font=font_label)
+    lbl_batch_bb = draw.textbbox((0, 0), "UNIT NAME", font=font_label)
     lbl_batch_w = lbl_batch_bb[2] - lbl_batch_bb[0]
     col2_w = max(batch_w, lbl_batch_w)
 
@@ -716,7 +727,7 @@ def render_ticket_image(ticket):
     c2x = sep1_x + 1 + gap_value
     batch_content_h = label_h + label_gap + (batch_bb[3] - batch_bb[1])
     c2_top = row_center_y - batch_content_h // 2
-    draw.text((c2x, c1_top), "Position", fill=lbl_color, font=font_label)
+    draw.text((c2x, c1_top), "UNIT NAME", fill=lbl_color, font=font_label)
     draw.text((c2x, c1_top + label_h + label_gap), batch, fill=val_color, font=font_batch)
 
     # Separator 2

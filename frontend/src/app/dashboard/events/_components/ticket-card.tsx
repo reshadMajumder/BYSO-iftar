@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -16,7 +15,7 @@ interface TicketCardProps {
   secretCode: string;
   isDonator: boolean;
   phone?: string;
-  batch?: string;
+  unitName?: string;
 }
 
 const ticketStyles: Record<TicketType, {
@@ -115,10 +114,25 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
   secretCode,
   isDonator,
   phone,
-  batch,
+  unitName,
 }, ref) => {
   const finalTicketType = isDonator ? 'Premium' : ticketType;
   const styles = ticketStyles[finalTicketType];
+
+  // Helper for unit name label
+  function unitNameLabel(value?: string) {
+    const labels: Record<string, string> = {
+      cumilla_district: 'Cumilla District',
+      burichang_upazila: 'Burichang Upazila',
+      debidwer_upazila: 'Debidwer Upazila',
+      barura_upazila: 'Barura Upazila',
+      sadar_dakshin_upazila: 'Sadar Dakshin Upazila',
+      brahmanpara_upazila: 'Brahmanpara Upazila',
+      comilla_modern_high_school: 'Comilla Modern High School',
+      comilla_high_school: 'Comilla High School',
+    };
+    return value ? labels[value] ?? value : '';
+  }
 
   return (
     <div className="w-full overflow-x-auto">
@@ -224,10 +238,10 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
                 <p className="text-2xl font-bold">{alumniName}</p>
               </div>
               <div className={cn("w-[1px] h-10 bg-gradient-to-b", styles.border)} />
-              {batch && (
+              {unitName && (
                 <div>
-                  <p className="text-[9px] uppercase tracking-wider opacity-60 mb-1">Position</p>
-                  <p className="text-xl font-semibold">{batch}</p>
+                  <p className="text-[9px] uppercase tracking-wider opacity-60 mb-1">Unit Name</p>
+                  <p className="text-xl font-semibold">{unitNameLabel(unitName)}</p>
                 </div>
               )}
               {phone && (
@@ -267,9 +281,13 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
 
         {/* Right Section - QR Code */}
         <div className={cn("w-[20%] flex flex-col items-center justify-center bg-black/20 border-l px-6 py-8", styles.text, styles.accent)}>
+          {unitName && (
+            <div className="mb-2 w-full text-center">
+              <span className="text-xs font-bold text-white bg-primary/30 rounded px-2 py-1">{unitNameLabel(unitName)}</span>
+            </div>
+          )}
           <div className="space-y-4 flex flex-col items-center">
             <p className="text-[8px] uppercase tracking-[0.3em] opacity-50 font-semibold">Entry Pass</p>
-
             {/* QR Code */}
             <div className={cn("p-[2px] rounded-2xl bg-gradient-to-br", styles.border)}>
               <div className="bg-white p-3 rounded-2xl">
@@ -280,7 +298,6 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
                 />
               </div>
             </div>
-
             {/* UUID */}
             <div className="w-full">
               <p className="text-[7px] font-mono opacity-40 tracking-wider uppercase text-center mb-1">Code</p>
@@ -290,7 +307,6 @@ const TicketCard = React.forwardRef<HTMLDivElement, TicketCardProps>(({
                 </p>
               </div>
             </div>
-
             <p className="text-[7px] text-center opacity-50 leading-relaxed uppercase tracking-wide">
               Scan at entry
             </p>

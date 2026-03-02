@@ -17,12 +17,11 @@ import { fetchWithAuth } from '@/lib/api';
 import { CopyableText } from '@/components/copyable-text';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertTriangle } from 'lucide-react';
-import Image from 'next/image';
 
 const paymentSchema = z.object({
     transaction_id: z.string().min(1, 'Transaction ID is required.'),
-    method: z.literal('bkash', {
-        errorMap: () => ({ message: "Please select bKash as the payment method." }),
+    method: z.enum(['bkash', 'nagad'], {
+        errorMap: () => ({ message: 'Please select a payment method.' }),
     }),
     phone: z.string().min(1, 'Phone number is required.'),
 });
@@ -39,9 +38,16 @@ function RegistrationPaymentPageContent() {
     const form = useForm<PaymentFormValues>({
         resolver: zodResolver(paymentSchema),
         defaultValues: {
-            method: 'bkash'
+            method: undefined,
         }
     });
+
+    const selectedMethod = form.watch('method');
+
+    const methodDetails: Record<string, { name: string; number: string }> = {
+        bkash: { name: 'bKash', number: '01782044801' },
+        nagad: { name: 'Nagad', number: '01719913297' },
+    };
 
     async function onSubmit(data: PaymentFormValues) {
         if (!amount) {
@@ -130,16 +136,22 @@ function RegistrationPaymentPageContent() {
                     <div className="mb-6 p-4 bg-muted rounded-lg text-sm space-y-4">
                         <p className="font-bold">Payment Instructions:</p>
                         <ol className="list-decimal list-inside space-y-3">
-                            <li>Open your bKash App and select <span className="font-bold text-foreground">"Send Money"</span>.</li>
-                            <li>
-                                <span >Enter any of the following Phone number:</span>
-                                <CopyableText text="+8801851070809" />
-                                <CopyableText text="+8801938485079" />
-                            </li>
-                            <li>
-                                <span >Enter the amount:</span> <span className="font-bold text-bkash">{Number(amount).toLocaleString()}tk</span>
-                            </li>
-                            <li>Complete the payment and copy the Transaction ID (TrxID).</li>
+                            <li>Select your payment method below (bKash or Nagad).</li>
+                            {selectedMethod && (
+                                <>
+                                    <li>
+                                        Open your <span className="font-bold text-primary">{methodDetails[selectedMethod].name}</span> App and select <span className="font-bold text-primary">&quot;Send Money&quot;</span>.
+                                    </li>
+                                    <li>
+                                        <span>Send money to this number:</span>
+                                        <CopyableText text={methodDetails[selectedMethod].number} />
+                                    </li>
+                                    <li>
+                                        <span>Enter the amount:</span> <span className="font-bold text-primary">{Number(amount).toLocaleString()}tk</span>
+                                    </li>
+                                    <li>Complete the payment and copy the Transaction ID (TrxID).</li>
+                                </>
+                            )}
                         </ol>
                     </div>
                     <Form {...form}>
@@ -149,7 +161,7 @@ function RegistrationPaymentPageContent() {
                                 name="phone"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Your bKash Phone Number</FormLabel>
+                                        <FormLabel>Your Phone Number (used to pay)</FormLabel>
                                         <FormControl>
                                             <Input placeholder="The number you paid from" {...field} />
                                         </FormControl>
@@ -171,6 +183,7 @@ function RegistrationPaymentPageContent() {
                                             </FormControl>
                                             <SelectContent>
                                                 <SelectItem value="bkash">bKash</SelectItem>
+                                                <SelectItem value="nagad">Nagad</SelectItem>
                                             </SelectContent>
                                         </Select>
                                         <FormMessage />
@@ -184,7 +197,7 @@ function RegistrationPaymentPageContent() {
                                     <FormItem>
                                         <FormLabel>Transaction ID (TrxID)</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Enter the TrxID from your bKash message" {...field} />
+                                            <Input placeholder="Enter the TrxID from your payment" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

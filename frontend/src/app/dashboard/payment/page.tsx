@@ -15,12 +15,11 @@ import { useToast } from '@/hooks/use-toast';
 import { API_BASE_URL } from '@/lib/constants';
 import { fetchWithAuth } from '@/lib/api';
 import { CopyableText } from '@/components/copyable-text';
-import Image from 'next/image';
 
 const paymentSchema = z.object({
   transaction_id: z.string().min(1, 'Transaction ID is required.'),
-  method: z.literal('bkash', {
-    errorMap: () => ({ message: "Please select bKash as the payment method." }),
+  method: z.enum(['bkash', 'nagad'], {
+    errorMap: () => ({ message: 'Please select a payment method.' }),
   }),
   phone: z.string().min(1, 'Phone number is required.'),
 });
@@ -37,9 +36,16 @@ function PaymentPageContent() {
   const form = useForm<PaymentFormValues>({
     resolver: zodResolver(paymentSchema),
     defaultValues: {
-      method: 'bkash',
+      method: undefined,
     }
   });
+
+  const selectedMethod = form.watch('method');
+
+  const methodDetails: Record<string, { name: string; number: string; sendType: string }> = {
+    bkash: { name: 'bKash', number: '01782044801', sendType: 'Send Money' },
+    nagad: { name: 'Nagad', number: '01719913297', sendType: 'Send Money' },
+  };
 
   async function onSubmit(data: PaymentFormValues) {
     if (!amount) {
@@ -94,32 +100,25 @@ function PaymentPageContent() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="mb-6">
-                    <Image 
-                        src="https://res.cloudinary.com/dzgs1uhn0/image/upload/v1762191634/bkash-payment-instruction_qrk8xu.png"
-                        alt="bKash Payment Instructions"
-                        width={1080}
-                        height={1920}
-                        className="w-full h-auto rounded-lg border shadow-md"
-                    />
-                     <p className="text-xs text-muted-foreground text-center mt-2">Tap and hold to zoom</p>
-                </div>
                  <div className="mb-6 p-4 bg-muted rounded-lg text-sm space-y-4">
                     <p className="font-bold">Payment Instructions:</p>
                     <ol className="list-decimal list-inside space-y-3">
-                        <li>Open your bKash App and select "Make Payment".</li>
-                        <li>
-                            <span >Enter the Merchant number:</span>
-                            <CopyableText text="+8801617895466" />
-                        </li>
-                         <li>
-                            <span >Enter the amount:</span> <span className="font-bold text-bkash">{Number(amount).toLocaleString()}tk</span>
-                        </li>
-                         <li>
-                            <span >Enter reference:</span>
-                            <CopyableText text="reunion2026" />
-                        </li>
-                        <li>Complete the payment and copy the Transaction ID (TrxID).</li>
+                        <li>Select your payment method below (bKash or Nagad).</li>
+                        {selectedMethod && (
+                            <>
+                                <li>
+                                    Open your <span className="font-bold text-primary">{methodDetails[selectedMethod].name}</span> App and select <span className="font-bold text-primary">&quot;{methodDetails[selectedMethod].sendType}&quot;</span>.
+                                </li>
+                                <li>
+                                    <span>Send money to this number:</span>
+                                    <CopyableText text={methodDetails[selectedMethod].number} />
+                                </li>
+                                <li>
+                                    <span>Enter the amount:</span> <span className="font-bold text-primary">{Number(amount).toLocaleString()}tk</span>
+                                </li>
+                                <li>Complete the payment and copy the Transaction ID (TrxID).</li>
+                            </>
+                        )}
                     </ol>
                 </div>
                 <Form {...form}>
@@ -129,7 +128,7 @@ function PaymentPageContent() {
                             name="phone"
                             render={({ field }) => (
                                 <FormItem>
-                                <FormLabel>Your bKash Phone Number</FormLabel>
+                                <FormLabel>Your Phone Number (used to pay)</FormLabel>
                                 <FormControl>
                                     <Input placeholder="The number you paid from" {...field} />
                                 </FormControl>
@@ -151,6 +150,7 @@ function PaymentPageContent() {
                                     </FormControl>
                                     <SelectContent>
                                     <SelectItem value="bkash">bKash</SelectItem>
+                                    <SelectItem value="nagad">Nagad</SelectItem>
                                     </SelectContent>
                                 </Select>
                                 <FormMessage />
